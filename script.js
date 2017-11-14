@@ -1,5 +1,16 @@
 function perform() {
-  //TODO implement
+
+  var promise = new  Promise(function ( resolve, reject) {
+      this.param  = param = 1
+    if (param) {
+        setTimeout(function(){
+            resolve(param);
+        }, 1000);
+    } else {
+        reject(param);
+    }
+  });
+  return  promise 
 }
 
 perform(null, function(value) { // value === null
