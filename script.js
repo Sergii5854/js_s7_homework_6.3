@@ -30,5 +30,3 @@ perform(null, function (value) { // value === null
       console.log(++param); // 3
       return param;
     });
-
-//https://stackoverflow.com/questions/4633125/is-it-possible-to-get-all-arguments-of-a-function-as-single-object-inside-that-f
