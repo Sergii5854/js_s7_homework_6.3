@@ -1,16 +1,24 @@
 function perform() {
+var argumentsToArray =  function(args) {  
 
-  var promise = new  Promise(function ( resolve, reject) {
-      this.param  = param = 1
-    if (param) {
-        setTimeout(function(){
-            resolve(param);
-        }, 1000);
-    } else {
-        reject(param);
-    }
-  });
-  return  promise 
+    return [].slice.apply(args); 
+  }
+
+  var args = argumentsToArray(arguments);
+  console.log(args);
+  args.forEach(function(value) {
+    if( typeof value !==  'undefined'){
+        console.log('value ===', value);
+        return value;
+      }else{
+        console.log( "error you args is : " + value)
+      }
+   });
+  //var getArgs = argumentsToArray(args)
+  this.then = function () {
+    return perform();
+  }
+  return this;
 }
 
 perform(null, function(value) { // value === null
@@ -26,3 +34,5 @@ perform(null, function(value) { // value === null
   console.log(++param); // 3
   return param;
 });
+
+//https://stackoverflow.com/questions/4633125/is-it-possible-to-get-all-arguments-of-a-function-as-single-object-inside-that-f
