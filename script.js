@@ -1,24 +1,22 @@
 function perform() {
-var argumentsToArray =  function(args) {  
-
+var argumentsToArray =  function(args) { 
+    if(args !=='object') {
     return [].slice.apply(args); 
+   }else{
+     return [].slice.apply(args); 
+   }
   }
-
+  var callback;
   var args = argumentsToArray(arguments);
-  console.log(args);
-  args.forEach(function(value) {
-    if( typeof value !==  'undefined'){
-        console.log('value ===', value);
-        return value;
-      }else{
-        console.log( "error you args is : " + value)
-      }
+  args.forEach(function(value) {  
+    argumentsToArray = value
    });
-  //var getArgs = argumentsToArray(args)
-  this.then = function () {
-    return perform();
-  }
-  return this;
+
+  var res = argumentsToArray(null, args)
+    this.then = function (argumentsToArray) {
+        return perform(res, argumentsToArray)
+    }
+    return this
 }
 
 perform(null, function(value) { // value === null
