@@ -17,7 +17,7 @@ function perform() {
   return this
 }
 
-perform(null, undefined, 0, 'string', null, function (value) { // value === null
+perform(null, function (value) { // value === null
   var param = 1;
   console.log(param); // 1
   return param;
