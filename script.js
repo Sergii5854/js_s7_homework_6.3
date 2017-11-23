@@ -1,20 +1,13 @@
 function perform() {
 
-  var argumentsToArray = function (args) {
-    return [].slice.apply(args);
-  }
+var res = arguments[arguments.length - 1].apply(this, [].slice.call(arguments, 0, -1))
 
-  var callback;
-  var args = argumentsToArray(arguments);
-  args.forEach(function (value) {
-    callback = value
-  });
-
-  var res = callback.apply(null, args)
-  this.then = function (callback) {
-    return perform(res, callback)
+  return {
+    then: function () {
+      res = arguments[arguments.length - 1](res)
+      return this
+    }
   }
-  return this
 }
 
 perform(null, function (value) { // value === null
